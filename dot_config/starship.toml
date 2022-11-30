@@ -1,0 +1,94 @@
+add_newline = true
+format = """\
+  $kubernetes\
+  $aws\
+  $python\
+  $terraform\
+  $line_break\
+  $directory\
+  $git_branch\
+  $git_commit\
+  $git_state\
+  $git_status \
+  $cmd_duration\
+  $character\
+  """
+
+command_timeout = 1000
+
+[aws]
+format = '[$symbol$profile(\($region\))]($style) '
+disabled = false
+symbol = "🅰 "
+
+[aws.region_aliases]
+ap-southeast-2 = "au"
+us-east-1 = "va"
+us-east-2 = "oh"
+us-west-1 = "ca"
+us-west-2 = "or"
+
+[aws.profile_aliases]
+"fc-services-stg:fc-eng-sre-admin" = "stg:sre"
+"fc-services-stg:fc-eng-backend-engineer" = "stg:be-eng"
+"fc-services-stg:fc-eng-backend-admin" = "stg:be-admin"
+"fc-services-prod:fc-eng-sre-admin" = "prod:sre"
+"fc-services-prod:fc-eng-backend-read-only" = "prod:be-ro"
+"fc-services-prod:fc-eng-backend-admin" = "prod:be-admin"
+"fc-services-preprod:fc-eng-sre-admin" = "preprod:sre"
+"fc-services-preprod:fc-eng-backend-read-only" = "preprod:be-ro"
+"fc-services-preprod:fc-eng-backend-admin" = "preprod:be-admin"
+
+
+[cmd_duration]
+disabled = true
+min_time = 500
+format = "underwent [$duration](bold yellow)"
+
+[terraform]
+format = "[$version$workspace]($style) "
+disabled = false
+
+[git_status]
+format = '([$all_status$ahead_behind]($style))'
+modified = "*"
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[✗](bold red)"
+
+[directory]
+truncation_length = 8
+format = "[$path]($style)[$lock_symbol]($lock_style) "
+style = "blue"
+
+[python]
+format = '[${symbol}${pyenv_prefix}${version}(\($virtualenv\))]($style) '
+style = "green"
+symbol = ""
+
+[username]
+style_user = "dimmed blue"
+show_always = false
+
+[kubernetes]
+format = '[\[$context[\($namespace\)](bold purple)\]]($style) '
+style = "cyan"
+disabled = false
+
+[kubernetes.context_aliases]
+"fc-services-stg:fc-eng-sre-admin:use1.*" = "stg:sre:use1"
+"fc-services-stg:fc-eng-backend-engineer:use1.*" = "stg:be-eng:use1"
+"fc-services-stg:fc-eng-backend-admin.*" = "stg:be-admin:use1"
+"fc-services-prod:fc-eng-sre-admin:use1.*" = "prod:sre:use1"
+"fc-services-prod:fc-eng-backend-read-only:use1.*" = "prod:be-ro:use1"
+"fc-services-prod:fc-eng-backend-admin:use1.*" = "prod:be-admin:use1"
+"fc-services-preprod:fc-eng-sre-admin:use1.*" = "preprod:sre:use1"
+"fc-services-preprod:fc-eng-backend-read-only:use1.*" = "preprod:be-ro:use1"
+"fc-services-preprod:fc-eng-backend-admin:use1.*" = "preprod:be-admin:use1"
+
+[time]
+disabled = true
