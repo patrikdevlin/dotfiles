@@ -108,6 +108,8 @@ alias ap="aws-profile"
 alias apm="aws-param"
 alias kx="kubectx"
 alias k="kubectl"
+alias kclr="kubectl config unset current-context"
+alias vim="lvim"
 
 bindkey "^[^[[C" forward-word
 bindkey "^[^[[D" backward-word
@@ -116,3 +118,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 source /Users/patrikdevlin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+eval "$(starship init zsh)"
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
