@@ -1,16 +1,17 @@
 add_newline = true
 format = """\
-  $kubernetes\
-  $aws\
+  $directory\
   $python\
   $terraform\
-  $line_break\
-  $directory\
   $git_branch\
   $git_commit\
   $git_state\
-  $git_status \
+  $git_status\
+  $fill\
+  $kubernetes\
+  $aws\
   $cmd_duration\
+  $line_break\
   $character\
   """
 
@@ -39,11 +40,13 @@ us-west-2 = "or"
 "fc-services-preprod:fc-eng-backend-read-only" = "preprod:be-ro"
 "fc-services-preprod:fc-eng-backend-admin" = "preprod:be-admin"
 
+[fill]
+symbol = " "
 
 [cmd_duration]
-disabled = true
+disabled = false
 min_time = 500
-format = "underwent [$duration](bold yellow)"
+format = "took [$duration](bold yellow)"
 
 [terraform]
 format = "[$version$workspace]($style) "
@@ -55,15 +58,15 @@ modified = "*"
 
 [git_branch]
 format = "[$symbol$branch]($style) "
+style = "bright-black"
 
 [character]
 success_symbol = "[➜](bold green)"
 error_symbol = "[✗](bold red)"
 
 [directory]
-truncation_length = 8
+truncation_length = 4
 format = "[$path]($style)[$lock_symbol]($lock_style) "
-style = "blue"
 
 [python]
 format = '[${symbol}${pyenv_prefix}${version}(\($virtualenv\))]($style) '
