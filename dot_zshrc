@@ -123,3 +123,7 @@ eval "$(starship init zsh)"
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+export PATH="/opt/homebrew/opt/postgresql@13/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/postgresql@13/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/postgresql@13/include"
