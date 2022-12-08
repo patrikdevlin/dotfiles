@@ -21,8 +21,9 @@ return require("packer").startup(function(use)
     use { "jose-elias-alvarez/null-ls.nvim"} -- formatters and linters
     use { "RRethy/vim-illuminate"}
 
-    -- Telescope
+    -- Telescope + Nav
     use { "nvim-telescope/telescope.nvim" }
+    use { 'ThePrimeagen/harpoon' }
 
     -- Treesitter
     use { "nvim-treesitter/nvim-treesitter"}
@@ -35,10 +36,14 @@ return require("packer").startup(function(use)
     use { "hrsh7th/cmp-nvim-lsp" }
     use { "hrsh7th/cmp-nvim-lua" }
 
-    -- Git
+      -- snippets
+    use { "L3MON4D3/LuaSnip" } --snippet engine
+    use { "rafamadriz/friendly-snippets" } -- a bunch of snippets to use
+
+    -- git
     use { "lewis6991/gitsigns.nvim"}
 
-    -- DAP
+    -- dap
     -- use { "mfussenegger/nvim-dap" }
     -- use { "rcarriga/nvim-dap-ui" }
     -- use { "ravenxrz/DAPInstall.nvim" } 

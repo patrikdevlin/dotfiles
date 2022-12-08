@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/Users/patrikdevlin/.local/share/nvim/site/pack/packer/start/Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
   },
+  LuaSnip = {
+    loaded = true,
+    path = "/Users/patrikdevlin/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    url = "https://github.com/L3MON4D3/LuaSnip"
+  },
   ["alpha-nvim"] = {
     loaded = true,
     path = "/Users/patrikdevlin/.local/share/nvim/site/pack/packer/start/alpha-nvim",
@@ -119,10 +124,20 @@ _G.packer_plugins = {
     path = "/Users/patrikdevlin/.local/share/nvim/site/pack/packer/start/dracula",
     url = "https://github.com/dracula/vim"
   },
+  ["friendly-snippets"] = {
+    loaded = true,
+    path = "/Users/patrikdevlin/.local/share/nvim/site/pack/packer/start/friendly-snippets",
+    url = "https://github.com/rafamadriz/friendly-snippets"
+  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/Users/patrikdevlin/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
+  harpoon = {
+    loaded = true,
+    path = "/Users/patrikdevlin/.local/share/nvim/site/pack/packer/start/harpoon",
+    url = "https://github.com/ThePrimeagen/harpoon"
   },
   ["impatient.nvim"] = {
     loaded = true,
