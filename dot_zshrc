@@ -74,6 +74,7 @@ plugins=(
 	git
 	zsh-autosuggestions
 	wd
+    ssh-agent
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -109,21 +110,32 @@ alias apm="aws-param"
 alias kx="kubectx"
 alias k="kubectl"
 alias kclr="kubectl config unset current-context"
-alias vim="lvim"
+alias lg="lazygit"
+alias vim="nvim"
 
+# Moving forwards and backwards via option
 bindkey "^[^[[C" forward-word
 bindkey "^[^[[D" backward-word
 
+# NVM 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 source /Users/patrikdevlin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# Starship
 eval "$(starship init zsh)"
+
+#Golang
+export PATH="$PATH:$(go env GOPATH)/bin"
+
+# Python
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+# Postgres
 export PATH="/opt/homebrew/opt/postgresql@13/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/postgresql@13/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/postgresql@13/include"
+
