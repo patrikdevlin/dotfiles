@@ -19,6 +19,8 @@ null_ls.setup {
     diagnostics.flake8,
     formatting.gofumpt,
     formatting.goimports,
+    formatting.buf,
+    formatting.sql_formatter,
+    diagnostics.buf
   },
-
 }

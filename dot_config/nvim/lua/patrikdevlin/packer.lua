@@ -10,9 +10,12 @@ return require("packer").startup(function(use)
     use { "nvim-lua/plenary.nvim" }
     use { "lewis6991/impatient.nvim" }
     use { "goolord/alpha-nvim" }
+    use { "kyazdani42/nvim-tree.lua" }
+    use { "akinsho/toggleterm.nvim" }
+    use {"lukas-reineke/indent-blankline.nvim"}
 
     -- ColorSchemes
-	use { "dracula/vim", as = "dracula"}
+  	use { "dracula/vim", as = "dracula"}
 
     --LSP
     use { "neovim/nvim-lspconfig"} -- enable LSP
@@ -41,7 +44,8 @@ return require("packer").startup(function(use)
     use { "rafamadriz/friendly-snippets" } -- a bunch of snippets to use
 
     -- git
-    use { "lewis6991/gitsigns.nvim"}
+    use { "lewis6991/gitsigns.nvim" }
+    use { "ruifm/gitlinker.nvim" }
 
     -- dap
     -- use { "mfussenegger/nvim-dap" }

@@ -38,12 +38,14 @@ keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 -- Close buffers
 keymap("n", "<S-q>", ":bdelete<CR>", opts)
 
+-- Close windows
+keymap("n", "<leader>q", ":q<CR>", opts)
+
 -- Better paste
 keymap("v", "p", '"_dP', opts)
+keymap("n", "<leader>p", '"0p', opts)
 
--- Insert --
--- Press jk fast to enter
-keymap("i", "jk", "<ESC>", opts)
+-- Better delete
 
 -- Visual --
 -- Stay in indent mode
@@ -57,9 +59,11 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
+keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+keymap("n", "<leader>fk", ":Telescope keymaps<CR>", opts)
+keymap("n", "<leader>fs", ":Telescope lsp_dynamic_workspace_symbols<CR>", opts)
+keymap("n", "<leader>fo", ":Telescope oldfiles<CR>", opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
@@ -69,15 +73,18 @@ keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.curren
 keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>')
 
 -- DAP
-keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
-keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opts)
-keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", opts)
-keymap("n", "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", opts)
-keymap("n", "<leader>dO", "<cmd>lua require'dap'.step_out()<cr>", opts)
-keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
-keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
-keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
-keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
+-- keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
+-- keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opts)
+-- keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", opts)
+-- keymap("n", "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", opts)
+-- keymap("n", "<leader>dO", "<cmd>lua require'dap'.step_out()<cr>", opts)
+-- keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
+-- keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
+-- keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
+-- keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
+
+-- Lsp
+keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
 
 -- Harpoon
 keymap("n", "<leader>ma", "<cmd>lua require'harpoon.mark'.add_file()<cr>", opts)
@@ -85,7 +92,7 @@ keymap("n", "<C-e>", "<cmd>lua require'harpoon.ui'.toggle_quick_menu()<cr>", opt
 keymap("n", "<leader>tc", "<cmd>lua require'harpoon.cmd-ui'.toggle_quick_menu()<cr>", opts)
 --
 -- -- quick navigation of added files
-keymap("n", "<leader>a", "<cmd>lua require'harpoon.ui'.nav_file(1)<cr>", opts)
-keymap("n", "<leader>s", "<cmd>lua require'harpoon.ui'.nav_file(2)<cr>", opts)
-keymap("n", "<leader>d", "<cmd>lua require'harpoon.ui' require'harpoon.ui'.nav_file(3) <cr>", opts)
-keymap("n", "<leader>f", "<cmd>lua require'harpoon.ui' require'harpoon.ui'.nav_file(4) <cr>", opts)
+keymap("n", "<leader>ha", "<cmd>lua require'harpoon.ui'.nav_file(1)<cr>", opts)
+keymap("n", "<leader>hs", "<cmd>lua require'harpoon.ui'.nav_file(2)<cr>", opts)
+keymap("n", "<leader>hd", "<cmd>lua require'harpoon.ui' require'harpoon.ui'.nav_file(3) <cr>", opts)
+keymap("n", "<leader>hf", "<cmd>lua require'harpoon.ui' require'harpoon.ui'.nav_file(4) <cr>", opts)

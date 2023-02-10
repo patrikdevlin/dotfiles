@@ -2,6 +2,7 @@ add_newline = true
 format = """\
   $directory\
   $python\
+  $nodejs\
   $terraform\
   $git_branch\
   $git_commit\

@@ -1,3 +1,4 @@
+-- Opts
 vim.opt.backup = false                          -- creates a backup file
 vim.opt.clipboard = "unnamedplus"               -- allows neovim to access the system clipboard
 vim.opt.cmdheight = 1                           -- more space in the neovim command line for displaying messages
@@ -22,9 +23,9 @@ vim.opt.updatetime = 300                        -- faster completion (4000ms def
 vim.opt.writebackup = false                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 vim.opt.expandtab = true                        -- convert tabs to spaces
 vim.opt.shiftwidth = 4                          -- the number of spaces inserted for each indentation
-vim.opt.softtabstop = 4
 vim.opt.tabstop = 4                             -- insert 2 spaces for a tab
-vim.opt.cursorline = true                       -- highlight the current line
+vim.opt.softtabstop = 4
+vim.opt.cursorline = false                      -- highlight the current line
 vim.opt.number = true                           -- set numbered lines
 vim.opt.laststatus = 3                          -- only the last window will always have a status line
 vim.opt.showcmd = false                         -- hide (partial) command in the last line of the screen (for performance)
