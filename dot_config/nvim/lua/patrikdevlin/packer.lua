@@ -1,56 +1,66 @@
 return require("packer").startup(function(use)
-    -- Packer can manage itself
-    use("wbthomason/packer.nvim")
+	-- Packer can manage itself
+	use("wbthomason/packer.nvim")
 
-    -- Plugins
-    use { "windwp/nvim-autopairs" }
-    use { "numToStr/Comment.nvim" }
-    use { "akinsho/bufferline.nvim" }
-    use { "nvim-lualine/lualine.nvim" }
-    use { "nvim-lua/plenary.nvim" }
-    use { "lewis6991/impatient.nvim" }
-    use { "goolord/alpha-nvim" }
-    use { "kyazdani42/nvim-tree.lua" }
-    use { "akinsho/toggleterm.nvim" }
-    use {"lukas-reineke/indent-blankline.nvim"}
+	-- Plugins
+	use({ "windwp/nvim-autopairs" })
+	use({ "numToStr/Comment.nvim" })
+	use({ "akinsho/bufferline.nvim" })
+	use({ "nvim-lualine/lualine.nvim" })
+	use({ "nvim-lua/plenary.nvim" })
+	use({ "lewis6991/impatient.nvim" })
+	use({ "kyazdani42/nvim-tree.lua" })
+	use({ "lukas-reineke/indent-blankline.nvim" })
 
-    -- ColorSchemes
-  	use { "dracula/vim", as = "dracula"}
+	-- ColorSchemes
+	use({ "dracula/vim", as = "dracula" })
 
-    --LSP
-    use { "neovim/nvim-lspconfig"} -- enable LSP
-    use { "williamboman/mason.nvim"}
-    use { "williamboman/mason-lspconfig.nvim"}
-    use { "jose-elias-alvarez/null-ls.nvim"} -- formatters and linters
-    use { "RRethy/vim-illuminate"}
+	-- LSP
+	use({
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v1.x",
+		requires = {
+			-- LSP Support
+			{ "neovim/nvim-lspconfig" }, -- Required
+			{ "williamboman/mason.nvim" }, -- Optional
+			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
 
-    -- Telescope + Nav
-    use { "nvim-telescope/telescope.nvim" }
-    use { 'ThePrimeagen/harpoon' }
+			-- Autocompletion
+			{ "hrsh7th/nvim-cmp" }, -- Required
+			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
+			{ "hrsh7th/cmp-buffer" }, -- Optional
+			{ "hrsh7th/cmp-path" }, -- Optional
+			{ "saadparwaiz1/cmp_luasnip" }, -- Optional
+			{ "hrsh7th/cmp-nvim-lua" }, -- Optional
 
-    -- Treesitter
-    use { "nvim-treesitter/nvim-treesitter"}
+			-- Snippets
+			{ "L3MON4D3/LuaSnip" }, -- Required
+			{ "rafamadriz/friendly-snippets" }, -- Optional
+		},
+	})
 
-    -- cmp plugins
-    use { "hrsh7th/nvim-cmp" } -- The completion plugin
-    use { "hrsh7th/cmp-buffer" } -- buffer completions
-    use { "hrsh7th/cmp-path" } -- path completions
-    use { "saadparwaiz1/cmp_luasnip" } -- snippet completions
-    use { "hrsh7th/cmp-nvim-lsp" }
-    use { "hrsh7th/cmp-nvim-lua" }
+	use({ "jose-elias-alvarez/null-ls.nvim" }) -- formatters and linters
+	use({ "RRethy/vim-illuminate" })
 
-      -- snippets
-    use { "L3MON4D3/LuaSnip" } --snippet engine
-    use { "rafamadriz/friendly-snippets" } -- a bunch of snippets to use
+	-- Telescope + Nav
+	use({ "nvim-telescope/telescope.nvim" })
+	use({ "ThePrimeagen/harpoon" })
 
-    -- git
-    use { "lewis6991/gitsigns.nvim" }
-    use { "ruifm/gitlinker.nvim" }
+	-- Treesitter
+	use({ "nvim-treesitter/nvim-treesitter" })
 
-    -- dap
-    -- use { "mfussenegger/nvim-dap" }
-    -- use { "rcarriga/nvim-dap-ui" }
-    -- use { "ravenxrz/DAPInstall.nvim" } 
+	-- snippets
+	use({ "L3MON4D3/LuaSnip" }) --snippet engine
+	use({ "rafamadriz/friendly-snippets" }) -- a bunch of snippets to use
+
+	-- git
+	use({ "lewis6991/gitsigns.nvim" })
+	use({ "ruifm/gitlinker.nvim" })
+
+	-- dap
+	-- use { "mfussenegger/nvim-dap" }
+	-- use { "rcarriga/nvim-dap-ui" }
+	-- use { "ravenxrz/DAPInstall.nvim" }
 
 	--[[
     --
@@ -66,7 +76,8 @@ return require("packer").startup(function(use)
 	'w0rp/ale',
 	ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex'},
 	cmd = 'ALEEnable',
-	config = 'vim.cmd[[ALEEnable]]--[['
+	config = 'vim.cmd[[ALEEnable]]
+	--[['
 	}
 
 	-- Plugins can have dependencies on other plugins
@@ -114,5 +125,4 @@ return require("packer").startup(function(use)
 	use {'tjdevries/colorbuddy.vim', {'nvim-treesitter/nvim-treesitter', opt = true}}
     
     -- ]]
-
 end)
