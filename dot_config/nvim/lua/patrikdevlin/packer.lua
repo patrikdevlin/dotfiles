@@ -45,6 +45,7 @@ return require("packer").startup(function(use)
 	-- Telescope + Nav
 	use({ "nvim-telescope/telescope.nvim" })
 	use({ "ThePrimeagen/harpoon" })
+	use({ "christoomey/vim-tmux-navigator" })
 
 	-- Treesitter
 	use({ "nvim-treesitter/nvim-treesitter" })
@@ -92,7 +93,7 @@ return require("packer").startup(function(use)
 	'my/supercoolplugin',
 	rocks = {'lpeg', {'lua-cjson', version = '2.1.0'}}
 	}
-    
+
 	-- You can specify rocks in isolation
 	use_rocks 'penlight'
 	use_rocks {'lua-resty-http', 'lpeg'}
@@ -123,6 +124,6 @@ return require("packer").startup(function(use)
 
 	-- You can specify multiple plugins in a single call
 	use {'tjdevries/colorbuddy.vim', {'nvim-treesitter/nvim-treesitter', opt = true}}
-    
+
     -- ]]
 end)

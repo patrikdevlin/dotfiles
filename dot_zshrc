@@ -112,6 +112,8 @@ alias k="kubectl"
 alias kclr="kubectl config unset current-context"
 alias lg="lazygit"
 alias vim="nvim"
+alias tma="tmux attach"
+alias clr="clear"
 
 # Moving forwards and backwards via option
 bindkey "^[^[[C" forward-word
