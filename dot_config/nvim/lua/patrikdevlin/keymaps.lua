@@ -63,8 +63,11 @@ keymap("n", "<leader>fh", ":Telescope resume<CR>", opts)
 keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>fk", ":Telescope keymaps<CR>", opts)
-keymap("n", "<leader>fs", ":Telescope lsp_dynamic_workspace_symbols<CR>", opts)
+keymap("n", "<leader>fw", ":Telescope lsp_dynamic_workspace_symbols<CR>", opts)
 keymap("n", "<leader>fo", ":Telescope oldfiles<CR>", opts)
+keymap("n", "<leader>fr", ":Telescope registers<CR>", opts)
+keymap("n", "<leader>fc", ":Telescope command_history<CR>", opts)
+keymap("n", "<leader>fs", ":Telescope search_history<CR>", opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)

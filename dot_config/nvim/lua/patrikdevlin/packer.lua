@@ -11,6 +11,7 @@ return require("packer").startup(function(use)
 	use({ "lewis6991/impatient.nvim" })
 	use({ "kyazdani42/nvim-tree.lua" })
 	use({ "lukas-reineke/indent-blankline.nvim" })
+	use({ "ethanholz/nvim-lastplace" })
 
 	-- ColorSchemes
 	use({ "dracula/vim", as = "dracula" })
@@ -18,7 +19,7 @@ return require("packer").startup(function(use)
 	-- LSP
 	use({
 		"VonHeikemen/lsp-zero.nvim",
-		branch = "v1.x",
+		branch = "v2.x",
 		requires = {
 			-- LSP Support
 			{ "neovim/nvim-lspconfig" }, -- Required
