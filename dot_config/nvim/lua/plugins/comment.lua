@@ -1,5 +1,6 @@
 return {
 	"numToStr/Comment.nvim",
+	event = "VeryLazy",
 	opts = {
 		pre_hook = function(ctx)
 			-- Only calculate commentstring for tsx filetypes

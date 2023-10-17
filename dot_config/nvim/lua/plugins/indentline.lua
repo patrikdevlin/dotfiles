@@ -1,10 +1,11 @@
 return {
     "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
+    event = "VeryLazy",
     opts = {
         exclude = {
-            filetypes = { "help", "packer", "NvimTree" },
+            filetypes = { "help", "NvimTree" },
             buftypes = { "terminal", "nofile" },
         },
     },
+    main = "ibl",
 }
