@@ -3,20 +3,20 @@ return {
     branch = "v3.x",
     dependencies = {
         -- LSP Support
-        { "neovim/nvim-lspconfig" },       -- Required
-        { "williamboman/mason.nvim" },     -- Optional
+        { "neovim/nvim-lspconfig" },             -- Required
+        { "williamboman/mason.nvim" },           -- Optional
         { "williamboman/mason-lspconfig.nvim" }, -- Optional
 
         -- Autocompletion
-        { "hrsh7th/nvim-cmp" },   -- Required
-        { "hrsh7th/cmp-nvim-lsp" }, -- Required
-        { "hrsh7th/cmp-buffer" }, -- Optional
-        { "hrsh7th/cmp-path" },   -- Optional
+        { "hrsh7th/nvim-cmp" },         -- Required
+        { "hrsh7th/cmp-nvim-lsp" },     -- Required
+        { "hrsh7th/cmp-buffer" },       -- Optional
+        { "hrsh7th/cmp-path" },         -- Optional
         { "saadparwaiz1/cmp_luasnip" }, -- Optional
-        { "hrsh7th/cmp-nvim-lua" }, -- Optional
+        { "hrsh7th/cmp-nvim-lua" },     -- Optional
 
         -- Snippets
-        { "L3MON4D3/LuaSnip" },       -- Required
+        { "L3MON4D3/LuaSnip" },             -- Required
         { "rafamadriz/friendly-snippets" }, -- Optional
     },
     opts = function()
@@ -42,28 +42,29 @@ return {
             bind("n", "gr", ":Telescope lsp_references<CR>", opts)
             bind("n", "gd", ":Telescope lsp_definitions<CR>", opts)
             bind("n", "gs", "<cmd> :vsplit<CR> <cmd>lua vim.lsp.buf.definition()<cr>", opts)
+            bind("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
             bind("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
             bind("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
             bind("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
             bind("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-            bind("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true }<cr>)")
-
-            lsp.buffer_autoformat()
+            bind("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>")
         end)
 
         local cmp = require("cmp")
         local cmp_action = require("lsp-zero").cmp_action()
 
         cmp.setup({
+            preselect = "item",
             window = {
                 -- completion = cmp.config.window.bordered(),
                 documentation = cmp.config.window.bordered(),
             },
             mapping = cmp.mapping.preset.insert({
                 -- `Enter` key to confirm completion
-                ["<CR>"] = cmp.mapping.confirm({ select = false }),
+                ["<CR>"] = cmp.mapping.confirm({ select = true }),
 
                 ["<Tab>"] = cmp_action.luasnip_supertab(),
+                ["<S-Tab>"] = cmp_action.select_prev_or_fallback(),
 
                 -- Ctrl+Space to trigger completion menu
                 ["<C-Space>"] = cmp.mapping.complete(),
