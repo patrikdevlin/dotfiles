@@ -6,14 +6,6 @@ local opts = { silent = true }
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
-
 -- Normal --
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -31,25 +23,25 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
--- Clear highlights
-keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
-
 -- Close buffers
 keymap("n", "<S-q>", ":bdelete<CR>", opts)
 
 -- Close windows
 keymap("n", "<leader>q", ":q<CR>", opts)
 
--- Better paste
-keymap("v", "p", '"_dP', opts)
-keymap("n", "<leader>p", '"0p', opts)
-
--- Better delete
-
 -- Visual --
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
+
+-- greatest remap ever
+keymap("x", "<leader>p", [["_dP]], opts)
+
+-- next greatest remap ever : asbjornHaland
+keymap({ "n", "v" }, "<leader>y", [["+y]], opts)
+keymap("n", "<leader>Y", [["+Y]], opts)
+
+keymap({ "n", "v" }, "<leader>d", [["_d]], opts)
 
 -- Plugins --
 
@@ -64,27 +56,12 @@ keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>fk", ":Telescope keymaps<CR>", opts)
 keymap("n", "<leader>fw", ":Telescope lsp_dynamic_workspace_symbols<CR>", opts)
 keymap("n", "<leader>fo", ":Telescope oldfiles<CR>", opts)
-keymap("n", "<leader>fr", ":Telescope registers<CR>", opts)
 keymap("n", "<leader>fc", ":Telescope command_history<CR>", opts)
 keymap("n", "<leader>fs", ":Telescope search_history<CR>", opts)
 
--- Git
-keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
-
 -- Comment
 keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
-keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>')
-
--- DAP
--- keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
--- keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opts)
--- keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", opts)
--- keymap("n", "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", opts)
--- keymap("n", "<leader>dO", "<cmd>lua require'dap'.step_out()<cr>", opts)
--- keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
--- keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
--- keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
--- keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
+keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', opts)
 
 -- Harpoon
 keymap("n", "<leader>ma", "<cmd>lua require'harpoon.mark'.add_file()<cr>", opts)

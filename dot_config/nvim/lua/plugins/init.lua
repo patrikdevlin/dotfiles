@@ -10,9 +10,9 @@ return {
 	},
 	{ "nvim-tree/nvim-web-devicons", lazy = true },
 
-	-- helpers
-	{ "nvim-lua/plenary.nvim", lazy = true },
-
 	-- tmux
 	{ "christoomey/vim-tmux-navigator" },
+
+	-- Highligt word under cursor
+	{ "RRethy/vim-illuminate", event = "VeryLazy" },
 }
