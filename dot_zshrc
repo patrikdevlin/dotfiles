@@ -75,6 +75,7 @@ plugins=(
 	zsh-autosuggestions
 	wd
     ssh-agent
+    docker-compose
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -107,19 +108,22 @@ source $ZSH/oh-my-zsh.sh
 
 alias ap="aws-profile"
 alias apm="aws-param"
+alias tg="terragrunt"
 alias kx="kubectx"
 alias k="kubectl"
 alias kclr="kubectl config unset current-context"
-alias lg="lazygit"
+alias vi="nvim"
 alias vim="nvim"
 alias tma="tmux attach"
 alias clr="clear"
+alias :q="exit"
+alias xhh="xh --help"
 
 # Moving forwards and backwards via option
 bindkey "^[^[[C" forward-word
 bindkey "^[^[[D" backward-word
 
-# NVM 
+# NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -137,7 +141,15 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 # Postgres
-export PATH="/opt/homebrew/opt/postgresql@13/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/postgresql@13/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/postgresql@13/include"
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/postgresql@15/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/postgresql@15/include"
 
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+# bun completions
+[ -s "/Users/patrikdevlin/.bun/_bun" ] && source "/Users/patrikdevlin/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
