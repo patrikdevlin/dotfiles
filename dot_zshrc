@@ -106,15 +106,33 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias kx="kubectx"
-alias k="kubectl"
-alias kclr="kubectl config unset current-context"
+# Aliases
+
+## General Aliases
 alias vi="nvim"
 alias vim="nvim"
+alias pvi="poetry run nvim"
 alias tma="tmux attach"
 alias clr="clear"
 alias :q="exit"
 alias xhh="xh --help"
+alias pn="pnpm"
+alias gu="gitui"
+
+## LSD Aliases
+alias ls="lsd"
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+
+## Kubernetes Aliases
+alias kx="kubectx"
+alias k="kubectl"
+alias kclr="kubectl config unset current-context"
+
+## DB
+alias hq="harlequin"
 
 # Moving forwards and backwards via option
 bindkey "^[^[[C" forward-word
@@ -123,7 +141,7 @@ bindkey "^[^[[D" backward-word
 # Starship
 eval "$(starship init zsh)"
 
-#Golang
+# Golang
 export PATH="$PATH:$(go env GOPATH)/bin"
 
 # bun completions
@@ -132,3 +150,13 @@ export PATH="$PATH:$(go env GOPATH)/bin"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+
+# direnv
+eval "$(direnv hook zsh)"
+
+# poetry
+export PATH="$HOME/.local/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
