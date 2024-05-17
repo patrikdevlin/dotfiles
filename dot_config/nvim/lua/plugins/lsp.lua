@@ -44,7 +44,7 @@ return {
             bind("n", "gr", ":Telescope lsp_references<CR>", opts)
             bind("n", "gd", ":Telescope lsp_definitions<CR>", opts)
             bind("n", "gs", "<cmd> :vsplit<CR> <cmd>lua vim.lsp.buf.definition()<cr>", opts)
-            bind("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
+            bind("n", "gk", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
             bind("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
             bind("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
             bind("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)

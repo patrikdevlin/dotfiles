@@ -11,6 +11,6 @@ return {
     -- tmux
     { "christoomey/vim-tmux-navigator" },
 
-    -- Highligt word under cursor
+    -- Highlight word under cursor
     { "RRethy/vim-illuminate",         event = "VeryLazy" },
 }

@@ -83,17 +83,17 @@ return {
                             ["ic"] = "@class.inner",
                             ["al"] = "@loop.outer",
                             ["il"] = "@loop.inner",
+                            ["ad"] = "@conditional.outer",
+                            ["id"] = "@conditional.inner",
                         },
                     },
                     swap = {
                         enable = true,
                         swap_next = {
-                            ["<leader>na"] = "@parameter.inner", -- swap parameters/argument with next
-                            ["<leader>nf"] = "@function.outer",  -- swap function with next
+                            ["<leader>a"] = "@parameter.inner", -- swap parameters/argument with next
                         },
                         swap_previous = {
-                            ["<leader>pa"] = "@parameter.inner", -- swap parameters/argument with prev
-                            ["<leader>pf"] = "@function.outer",  -- swap function with previous
+                            ["<leader>A"] = "@parameter.inner", -- swap parameters/argument with prev
                         },
                     },
                 },

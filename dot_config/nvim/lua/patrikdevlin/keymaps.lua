@@ -29,6 +29,9 @@ keymap("n", "<S-q>", ":bdelete<CR>", opts)
 -- Close windows
 keymap("n", "<leader>q", ":q<CR>", opts)
 
+-- Navigate to last changed
+keymap("n", "gl", "`.", { silent = true, desc = "Jump to the last change in the file" })
+
 -- Visual --
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
@@ -43,11 +46,14 @@ keymap("n", "<leader>Y", [["+Y]], opts)
 
 keymap({ "n", "v" }, "<leader>d", [["_d]], opts)
 
+-- Comment
+keymap("n", "<leader>/", "gcc", { silent = true, remap = true })
+keymap("v", "<leader>/", 'gc', { silent = true, remap = true })
+
 -- Plugins --
 
 -- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
-
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>fh", ":Telescope resume<CR>", opts)
@@ -59,10 +65,6 @@ keymap("n", "<leader>fo", ":Telescope oldfiles<CR>", opts)
 keymap("n", "<leader>fc", ":Telescope command_history<CR>", opts)
 keymap("n", "<leader>fs", ":Telescope search_history<CR>", opts)
 keymap("n", "<leader>fr", ":Telescope registers<CR>", opts)
-
--- Comment
-keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
-keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', opts)
 
 -- Harpoon
 keymap("n", "<leader>ma", "<cmd>lua require'harpoon.mark'.add_file()<cr>", opts)
