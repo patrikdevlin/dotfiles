@@ -61,7 +61,7 @@ return {
 		end
 		return {
 			options = {
-				theme = "dracula-nvim",
+				theme = "catppuccin-macchiato",
 				component_separators = "",
 				section_separators = { left = "", right = "" },
 			},

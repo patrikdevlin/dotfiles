@@ -14,10 +14,10 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Resize with arrows
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<C-Up>", ":resize +4<CR>", opts)
+keymap("n", "<C-Down>", ":resize -4<CR>", opts)
+keymap("n", "<C-Left>", ":vertical resize +4<CR>", opts)
+keymap("n", "<C-Right>", ":vertical resize -4<CR>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
@@ -45,6 +45,7 @@ keymap({ "n", "v" }, "<leader>y", [["+y]], opts)
 keymap("n", "<leader>Y", [["+Y]], opts)
 
 keymap({ "n", "v" }, "<leader>d", [["_d]], opts)
+keymap({ "n", "v" }, "<leader>d", [["_d]], opts)
 
 -- Comment
 keymap("n", "<leader>/", "gcc", { silent = true, remap = true })
@@ -52,15 +53,16 @@ keymap("v", "<leader>/", 'gc', { silent = true, remap = true })
 
 -- Plugins --
 
--- NvimTree
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+-- Oil
+keymap("n", "<leader>e", ":Oil<CR>", opts)
+
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>fh", ":Telescope resume<CR>", opts)
 keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>fk", ":Telescope keymaps<CR>", opts)
-keymap("n", "<leader>fw", ":Telescope lsp_dynamic_workspace_symbols<CR>", opts)
+keymap("n", "<leader>fw", ":Telescope lsp_document_symbols<CR>", opts)
 keymap("n", "<leader>fo", ":Telescope oldfiles<CR>", opts)
 keymap("n", "<leader>fc", ":Telescope command_history<CR>", opts)
 keymap("n", "<leader>fs", ":Telescope search_history<CR>", opts)
@@ -76,3 +78,8 @@ keymap("n", "<leader>ha", "<cmd>lua require'harpoon.ui'.nav_file(1)<cr>", opts)
 keymap("n", "<leader>hs", "<cmd>lua require'harpoon.ui'.nav_file(2)<cr>", opts)
 keymap("n", "<leader>hd", "<cmd>lua require'harpoon.ui' require'harpoon.ui'.nav_file(3) <cr>", opts)
 keymap("n", "<leader>hf", "<cmd>lua require'harpoon.ui' require'harpoon.ui'.nav_file(4) <cr>", opts)
+
+-- Chatgpt
+
+keymap({ "n", "v" }, "<leader>cc", ":ChatGPTEditWithInstructions<cr>", opts)
+keymap("n", "<leader>c", ":ChatGPT<cr>", opts)
