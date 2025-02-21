@@ -134,6 +134,9 @@ alias kclr="kubectl config unset current-context"
 # Golang
 export PATH="$PATH:$(go env GOPATH)/bin"
 
+# GNU Sed
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+
 # direnv
 eval "$(direnv hook zsh)"
 
@@ -153,3 +156,11 @@ eval "$(atuin init zsh --disable-up-arrow)"
 
 # Starship
 eval "$(starship init zsh)"
+
+# pnpm
+export PNPM_HOME="/Users/patrikdevlin/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
