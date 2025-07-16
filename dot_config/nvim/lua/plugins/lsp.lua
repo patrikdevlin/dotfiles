@@ -1,85 +1,119 @@
 return {
-	"VonHeikemen/lsp-zero.nvim",
-	branch = "v3.x",
-	dependencies = {
-		-- LSP Support
-		{ "neovim/nvim-lspconfig" }, -- Required
-		{ "williamboman/mason.nvim" }, -- Optional
-		{ "williamboman/mason-lspconfig.nvim" }, -- Optional
-
-		-- Autocompletion
-		{ "hrsh7th/nvim-cmp" }, -- Required
-		{ "hrsh7th/cmp-nvim-lsp" }, -- Required
-		{ "hrsh7th/cmp-buffer" }, -- Optional
-		{ "hrsh7th/cmp-path" }, -- Optional
-		{ "saadparwaiz1/cmp_luasnip" }, -- Optional
-		{ "hrsh7th/cmp-nvim-lua" }, -- Optional
-
-		-- Snippets
-		{ "L3MON4D3/LuaSnip" }, -- Required
-		{ "rafamadriz/friendly-snippets" }, -- Optional
+	{
+		"williamboman/mason.nvim",
+		lazy = false,
+		opts = {},
 	},
-	opts = function()
-		local lsp = require("lsp-zero")
+	-- Autocompletion
+	{
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
+		dependencies = {
+			{ "hrsh7th/cmp-buffer" }, -- Optional
+			{ "hrsh7th/cmp-path" }, -- Optional
+		},
+		config = function()
+			local cmp = require("cmp")
 
-		require("mason").setup({})
-		require("mason-lspconfig").setup({
-			ensure_installed = {
-				"lua_ls",
-				"biome",
-				"gopls",
-				"ruff",
-				"pyright",
-				"ts_ls",
-				"rust_analyzer",
-			},
-			handlers = {
-				lsp.default_setup,
-			},
-		})
+			cmp.setup({
+				sources = {
+					{ name = "nvim_lsp" },
+				},
+				window = {
+					completion = cmp.config.window.bordered(),
+					documentation = cmp.config.window.bordered(),
+				},
+				mapping = cmp.mapping.preset.insert({
+					-- `Enter` key to confirm completion
+					["<CR>"] = cmp.mapping.confirm({ select = true }),
 
-		lsp.on_attach(function(client, bufnr)
-			local opts = { buffer = bufnr, silent = true }
-			local bind = vim.keymap.set
+					-- Ctrl+Space to trigger completion menu
+					["<C-Space>"] = cmp.mapping.complete(),
 
-			bind("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
-			bind("n", "gr", ":Telescope lsp_references<CR>", opts)
-			bind("n", "gd", ":Telescope lsp_definitions<CR>", opts)
-			bind("n", "gs", "<cmd> :vsplit<CR> <cmd>lua vim.lsp.buf.definition()<cr>", opts)
-			bind("n", "gx", "<cmd> :split<CR> <cmd>lua vim.lsp.buf.definition()<cr>", opts)
-			bind("n", "gk", "<cmd>lua vim.diagnostic.open_float({source=true})<cr>", opts)
-			bind("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-			bind("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
-			bind("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
-			bind("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-			bind("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>")
-		end)
+					["<C-k>"] = cmp.mapping.select_prev_item(),
+					["<C-j>"] = cmp.mapping.select_next_item(),
+					["<C-p>"] = vim.NIL,
+					["<C-n>"] = vim.NIL,
+				}),
+				-- snippet = {
+				-- 	expand = function(args)
+				-- 		vim.snippet.expand(args.body)
+				-- 	end,
+				-- },
+			})
+		end,
+	},
 
-		local cmp = require("cmp")
+	-- LSP
+	{
+		"neovim/nvim-lspconfig",
+		cmd = { "LspInfo", "LspInstall", "LspStart" },
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "williamboman/mason.nvim" },
+			{ "williamboman/mason-lspconfig.nvim" },
 
-		cmp.setup({
-			preselect = "item",
-			window = {
-				-- completion = cmp.config.window.bordered(),
-				documentation = cmp.config.window.bordered(),
-			},
-			mapping = cmp.mapping.preset.insert({
-				-- `Enter` key to confirm completion
-				["<CR>"] = cmp.mapping.confirm({ select = true }),
+			-- Autocompletion
+			{ "hrsh7th/cmp-buffer" }, -- Optional
+			{ "hrsh7th/cmp-path" }, -- Optional
+			{ "saadparwaiz1/cmp_luasnip" }, -- Optional
+			{ "hrsh7th/cmp-nvim-lua" }, -- Optional
 
-				-- Ctrl+Space to trigger completion menu
-				["<C-Space>"] = cmp.mapping.complete(),
+			-- Snippets
+			{ "L3MON4D3/LuaSnip" }, -- Required
+			{ "rafamadriz/friendly-snippets" }, -- Optional
+		},
+		init = function()
+			-- Reserve a space in the gutter
+			-- This will avoid an annoying layout shift in the screen
+			vim.opt.signcolumn = "yes"
+		end,
+		config = function()
+			local lsp_defaults = require("lspconfig").util.default_config
 
-				["<C-k>"] = cmp.mapping.select_prev_item(),
-				["<C-j>"] = cmp.mapping.select_next_item(),
-				["<C-p>"] = vim.NIL,
-				["<C-n>"] = vim.NIL,
-			}),
-		})
+			-- Add cmp_nvim_lsp capabilities settings to lspconfig
+			-- This should be executed before you configure any language server
+			lsp_defaults.capabilities =
+				vim.tbl_deep_extend("force", lsp_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())
 
-		local lua_opts = lsp.nvim_lua_ls()
-		require("lspconfig").lua_ls.setup(lua_opts)
+			vim.api.nvim_create_autocmd("LspAttach", {
+				desc = "LSP actions",
+				callback = function(event)
+					local opts = { buffer = event.buf }
 
-		lsp.setup()
-	end,
+					vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
+					vim.keymap.set("n", "gs", "<cmd> :vsplit<CR> <cmd>lua vim.lsp.buf.definition()<cr>", opts)
+					vim.keymap.set("n", "gx", "<cmd> :split<CR> <cmd>lua vim.lsp.buf.definition()<cr>", opts)
+					vim.keymap.set("n", "gk", "<cmd>lua vim.diagnostic.open_float({source=true})<cr>", opts)
+					vim.keymap.set("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+					vim.keymap.set("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
+					vim.keymap.set("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
+					vim.keymap.set("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+					vim.keymap.set("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>")
+				end,
+			})
+
+			require("mason-lspconfig").setup({
+				ensure_installed = {
+					"lua_ls",
+					"biome",
+					"gopls",
+					"ruff",
+					"pyright",
+					"ts_ls",
+					"rust_analyzer",
+					"tailwindcss",
+					"astro",
+				},
+				handlers = {
+					-- this first function is the "default handler"
+					-- it applies to every language server without a "custom handler"
+					function(server_name)
+						require("lspconfig")[server_name].setup({})
+					end,
+				},
+			})
+		end,
+	},
 }

@@ -64,12 +64,10 @@ return {
 							-- You can use the capture groups defined in textobjects.scm
 							["af"] = "@function.outer",
 							["if"] = "@function.inner",
-							["ac"] = "@class.outer",
-							["ic"] = "@class.inner",
 							["al"] = "@loop.outer",
 							["il"] = "@loop.inner",
-							["ad"] = "@conditional.outer",
-							["id"] = "@conditional.inner",
+							["ac"] = "@conditional.outer",
+							["ic"] = "@conditional.inner",
 						},
 					},
 					swap = {
