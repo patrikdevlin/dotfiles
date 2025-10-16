@@ -1,0 +1,5 @@
+[global]
+load_dotenv = true
+
+[whitelist]
+prefix = [ "~/github/wilde-data/", "~/github/getgrizz/", "~/github/brainforge/" ]
