@@ -35,11 +35,6 @@ return {
 					["<C-p>"] = vim.NIL,
 					["<C-n>"] = vim.NIL,
 				}),
-				-- snippet = {
-				-- 	expand = function(args)
-				-- 		vim.snippet.expand(args.body)
-				-- 	end,
-				-- },
 			})
 		end,
 	},
