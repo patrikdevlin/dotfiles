@@ -22,6 +22,7 @@ return {
 			typescriptreact = { "biome" },
 			markdown = { "mdformat" },
 			json = { "biome" },
+			graphql = { "prettierd" },
 		},
 		-- Set up format-on-save
 		format_on_save = function(bufnr)

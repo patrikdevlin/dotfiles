@@ -76,6 +76,7 @@ plugins=(
 	wd
     ssh-agent
     docker-compose
+    mise
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -118,6 +119,8 @@ alias :q="exit"
 alias xhh="xh --help"
 alias pn="pnpm"
 alias gu="gitui"
+alias cc="claude"
+alias oc="opencode"
 
 ## LSD Aliases
 alias ls="lsd"
@@ -140,10 +143,6 @@ export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 # direnv
 eval "$(direnv hook zsh)"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # atuin
 . "$HOME/.atuin/bin/env"
 eval "$(atuin init zsh --disable-up-arrow)"
@@ -160,3 +159,4 @@ esac
 # pnpm end
 
 eval "$(zoxide init zsh)"
+eval "$(/Users/patrikdevlin/.local/bin/mise activate zsh)"

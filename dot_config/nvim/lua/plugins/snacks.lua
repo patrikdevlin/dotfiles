@@ -68,9 +68,9 @@ return {
 		},
 		-- Picker
 		{
-			"<leader>fs",
+			"<leader>fh",
 			function()
-				Snacks.picker.search_history()
+				Snacks.picker.resume()
 			end,
 			desc = "Search History",
 		},
