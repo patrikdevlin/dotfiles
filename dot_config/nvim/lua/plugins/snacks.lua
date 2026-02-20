@@ -24,6 +24,13 @@ return {
 		picker = {
 			enabled = true,
 			layout = { preset = "telescope" },
+			win = {
+				input = {
+					keys = {
+						["<c-->"] = { "edit_split", mode = { "i", "n" } },
+					},
+				},
+			},
 		},
 		explorer = {
 			enabled = true,
