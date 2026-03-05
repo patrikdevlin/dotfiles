@@ -2,9 +2,12 @@
 font-family = CaskaydiaCove Nerd Font Mono
 font-size = 12
 
+# Cursor
+custom-shader = shaders/cursor_tail.glsl
+
 # Theme
 background-opacity = 0.95
-theme = catppuccin-frappe
+theme = Catppuccin Frappe
 
 # Window
 macos-titlebar-style = hidden
@@ -12,4 +15,5 @@ macos-titlebar-style = hidden
 # Mouse
 mouse-hide-while-typing = true
 
-# Keybinds
+# Keybindings
+keybind = cmd+k=text:\x06\x0c
